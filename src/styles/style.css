@@ -65,3 +65,7 @@ pre.CodeMirror-line {
 .tui-editor-contents ul, .tui-editor-contents menu, .tui-editor-contents ol, .tui-editor-contents dir {
   color: #181818;
 }
+
+.te-switch-button.markdown, .te-switch-button.wysiwyg {
+  font-family: system-ui;
+}
