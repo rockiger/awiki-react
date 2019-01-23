@@ -1,62 +1,43 @@
-// export const blueprintTree = [
-//   {
-//     id: 0,
-//     hasCaret: true,
-//     icon: 'folder-close',
-//     label: 'Folder 0',
-//   },
-//   {
-//     id: 1,
-//     icon: 'folder-close',
-//     isExpanded: true,
-//     label: (
-          
-//                 Folder 1
-           
-//         ),
-//     childNodes: [
-//           {
-//             id: 2,
-//             icon: 'document',
-//             label: 'Item 0',
-//             secondaryLabel: (
-                  
-                     
-                  
-//                 ),
-//           },
-//           {
-//             id: 3,
-//             icon: 'tag',
-//             label: 'Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.',
-//           },
-//           {
-//             id: 4,
-//             hasCaret: true,
-//             icon: 'folder-close',
-//             label: (
-                  
-//                         Folder 2
-                  
-//                 ),
-//             childNodes: [
-//                     { id: 5, label: 'No-Icon Item' },
-//                     { id: 6, icon: 'tag', label: 'Item 1' },
-//                   {
-//                     id: 7,
-//                     hasCaret: true,
-//                     icon: 'folder-close',
-//                     label: 'Folder 3',
-//                     childNodes: [
-//                             { id: 8, icon: 'document', label: 'Item 0' },
-//                             { id: 9, icon: 'tag', label: 'Item 1' },
-//                         ],
-//                   },
-//                 ],
-//           },
-//         ],
-//   },
-// ];
+import React from 'react';
+import { Classes, Icon, ITreeNode, Position, Tooltip, Tree } from "@blueprintjs/core"; 
+
+export const blueprintTree = [
+  {
+      id: 0,
+      label: "Folder 0",
+  },
+  {
+      id: 1,
+      label: "Folder 1",
+      childNodes: [
+          {
+              id: 2,
+              label: "Item 0",
+          },
+          {
+              id: 3,
+              isExpanded: true,
+              label: "Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.",
+          },
+          {
+              id: 4,
+              label: "Folder 2",
+              childNodes: [
+                  { id: 5, label: "No-Icon Item" },
+                  { id: 6, label: "Item 1" },
+                  {
+                      id: 7,
+                      label: "Folder 3",
+                      childNodes: [
+                          { id: 8, label: "Item 0" },
+                          { id: 9, label: "Item 1" },
+                      ],
+                  },
+              ],
+          },
+      ],
+  },
+];
 
 //   export const smallTree = [
 //     {
