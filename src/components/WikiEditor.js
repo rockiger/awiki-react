@@ -17,9 +17,6 @@ function normalizeCurrentFile(relFilePath) {
 
 function writeEditorValue(state) {
     const { currentFile } = state;
-    //   console.log('writeEditorValue:', currentFile);
-    //   console.log('TUIEDITOR:', TUIEDITOR.getMarkdown());
-    //   console.log(normalizeCurrentFile(currentFile));
     try {
         fs.writeFileSync(
             normalizeCurrentFile(currentFile),

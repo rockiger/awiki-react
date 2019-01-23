@@ -38,7 +38,11 @@ export default class Sidebar extends Component {
         directoryTreeToObj(BASEPATH, (err, results) => {
             if (err) throw err;
 
-            if (results) this.setState({ nodes: results });
+            if (results) {
+                const nodes = results;
+                nodes[0].isExpanded = true;
+                this.setState({ nodes });
+            }
         });
     }
 
@@ -62,7 +66,7 @@ export default class Sidebar extends Component {
 
     render() {
         return (
-            <div>
+            <div className="sidebar">
                 <Tree
                     contents={this.state.nodes}
                     onNodeClick={this.handleNodeClick}

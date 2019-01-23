@@ -1,0 +1,67 @@
+:root {
+    /* My theme vars */
+    --bg_color: #F5F8FA;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui;
+    font-size: 13px;
+    background-color: rgb(240, 240, 240);
+  }
+  
+  main {
+    color: rgb(17, 17, 17);
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    width: calc(100vw - 270px);
+  }
+
+  .sidebar {
+    position: relative;
+    width: 270px;
+    height: 100vh;
+    overflow: auto;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    cursor: default;
+    padding: 7px 0;
+    background-color: var(--bg_color)
+  }
+
+  /* Tui-Editor */
+  .tui-editor-contents {
+    font-size: 18px;
+  }
+
+  .tui-editor-defaultUI {
+    font-family: "Merriweather", "Noto Serif", "Liberation Serif", Georgia, "Times New Roman", serif;
+    font-weight: lighter;
+  }
+
+  .tui-editor .te-preview-style-vertical .te-preview {
+    display: none;
+  }
+  .tui-editor .te-preview-style-vertical .te-editor {
+    width: 100%;
+  }
+
+pre.CodeMirror-line {
+  outline: unset;
+  font-weight: normal;
+}
+
+.tui-editor .te-preview-style-vertical .te-md-splitter {
+    display: none;
+}
+
+.tui-editor-contents ul, .tui-editor-contents menu, .tui-editor-contents ol, .tui-editor-contents dir {
+  color: #181818;
+}
