@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <link rel="stylesheet" href="../node_modules/tui-editor/dist/tui-editor.css">
+  <link rel="stylesheet" href="../node_modules/tui-editor/dist/tui-editor-contents.css">
+  <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css">
 </head>
 <body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0" >
   <div id="App"></div>
@@ -11,6 +16,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
+import { App } from './app'
 
 const render = () => {
   const App = require('./app').default;
