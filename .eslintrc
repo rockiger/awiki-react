@@ -8,6 +8,9 @@
     "linebreak-style": 0,
     "react/prefer-stateless-function": 0,
     "react/jsx-filename-extension": "off",
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4],
+    "react/destructuring-assignment": "off",
     "no-use-before-define": "off"
   }
 }

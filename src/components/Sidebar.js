@@ -44,6 +44,7 @@ export default class Sidebar extends Component {
 
     handleNodeClick(nodeData, e) {
         console.log('handleNodeClick:', nodeData, e);
+        this.props.onClickNode(nodeData.id);
         this.setState(this.state);
     }
 
@@ -62,13 +63,13 @@ export default class Sidebar extends Component {
     render() {
         return (
             <div>
-            <Tree
+                <Tree
                     contents={this.state.nodes}
                     onNodeClick={this.handleNodeClick}
                     onNodeCollapse={this.handleNodeCollapse}
                     onNodeExpand={this.handleNodeExpand}
-              />
-          </div>
+                />
+            </div>
         );
     }
 }
