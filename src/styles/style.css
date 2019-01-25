@@ -69,3 +69,41 @@ pre.CodeMirror-line {
 .te-switch-button.markdown, .te-switch-button.wysiwyg {
   font-family: system-ui;
 }
+
+
+/* Scrollbars */ 
+
+::-webkit-scrollbar
+{
+	height: 13px;
+	width: 13px;
+	background-color: #d6d6d6;
+}
+
+::-webkit-scrollbar-thumb
+{
+	height: 42px;
+	background-color: #9b9d9e;
+	border: 3px solid #d6d6d6;
+	-webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+	background-color: #828586;
+}
+
+::-webkit-scrollbar-thumb:active
+{
+	background-color: #4a90d9;
+}
+
+::-webkit-scrollbar-thumb:window-inactive
+{
+	background-color: #ededed;
+}
+
+::-webkit-scrollbar-corner
+{
+	background-color: #d6d6d6;
+}
