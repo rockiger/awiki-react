@@ -12,10 +12,10 @@ export default class App extends React.Component {
             currentFile: '/home/macco/mega/awiki/Home/Bücher/Bergauf_mit_Rückenwind',
         };
 
-        this.onClickNode = this.onClickNode.bind(this);
+        this.setCurrentFile = this.setCurrentFile.bind(this);
     }
 
-    onClickNode(relativePath) {
+    setCurrentFile(relativePath) {
         console.log('onClickNode');
         console.log(relativePath);
         this.setState({
@@ -31,9 +31,9 @@ export default class App extends React.Component {
                 className="app-container"
                 data-tid="container"
             >
-                <Sidebar onClickNode={this.onClickNode} />
+                <Sidebar setCurrentFile={this.setCurrentFile} />
                 <main style={{ padding: 0, overflowY: 'hidden' }}>
-                    <WikiEditor currentFile={this.state.currentFile} />
+                    <WikiEditor currentFile={this.state.currentFile} setCurrentFile={this.setCurrentFile} />
                 </main>
             </div>
         );

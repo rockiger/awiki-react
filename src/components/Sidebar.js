@@ -48,7 +48,7 @@ export default class Sidebar extends Component {
 
     handleNodeClick(nodeData, e) {
         console.log('handleNodeClick:', nodeData, e);
-        this.props.onClickNode(nodeData.id);
+        this.props.setCurrentFile(nodeData.id);
         this.setState(this.state);
     }
 
