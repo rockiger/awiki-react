@@ -1,14 +1,14 @@
 import fs from 'fs';
+import * as jetpack from 'fs-jetpack';
 import { shell } from 'electron';
 
 import React from 'react';
-
 import Editor from 'tui-editor';
 
 import { BASEPATH, EXT } from '../constants';
 
 
-let TUIEDITOR;
+let TuiEditor;
 
 class WikiEditor extends React.Component {
     constructor(props) {
@@ -22,6 +22,7 @@ class WikiEditor extends React.Component {
 
         window.addEventListener('beforeunload', ev => writeEditorValue(this.state));
         window.addEventListener('blur', ev => writeEditorValue(this.state));
+        this.imageBlobHook = this.imageBlobHook.bind(this);
     }
 
 
@@ -31,9 +32,9 @@ class WikiEditor extends React.Component {
         console.log('getDerivedStateFromProps');
         if (props.currentFile !== state.currentFile) {
             writeEditorValue(state);
-            TUIEDITOR.setMarkdown(createEditorValue(props.currentFile));
-            TUIEDITOR.moveCursorToStart(); // TODO Load positon in file
-            TUIEDITOR.focus();
+            TuiEditor.setMarkdown(createEditorValue(props.currentFile));
+            TuiEditor.moveCursorToStart(); // TODO Load positon in file
+            TuiEditor.focus();
             return {
                 currentFile: props.currentFile,
                 value: createEditorValue(props.currentFile),
@@ -45,13 +46,16 @@ class WikiEditor extends React.Component {
     }
 
     componentDidMount() {
-        TUIEDITOR = new Editor({
+        TuiEditor = new Editor({
             el: document.querySelector('#editSection'),
             initialEditType: 'wysiwyg',
             previewStyle: 'vertical',
             height: '100vh',
             exts: ['colorSyntax'],
             initialValue: createEditorValue(this.state.currentFile),
+            hooks: {
+                addImageBlobHook: this.imageBlobHook,
+            },
         });
         this.addClickEventListenersToLinks();
     }
@@ -65,6 +69,16 @@ class WikiEditor extends React.Component {
         ev.preventDefault();
         const filePath = decodeURI(ev.target.href.replace('file:///', '/'));
         this.props.setCurrentFile(filePath);
+    }
+
+    imageBlobHook(fileBlob, callback) {
+        // Copies the image into the file structure of awiki
+        const cwd = currentDir(this.state.currentFile);
+        jetpack.dir(cwd);
+        const fileDestination = jetpack.path(cwd, fileBlob.name);
+        jetpack.copy(fileBlob.path, fileDestination);
+        callback(fileDestination, fileBlob.name);
+        return false;
     }
 
     addClickEventListenersToLinks() {
@@ -106,12 +120,16 @@ function normalizeCurrentFile(relFilePath) {
     return absFilePath;
 }
 
+function currentDir(relFilePath) {
+    return normalizeCurrentFile(relFilePath).slice(0, -EXT.length);
+}
+
 function writeEditorValue(state) {
     const { currentFile } = state;
     try {
         fs.writeFileSync(
             normalizeCurrentFile(currentFile),
-            TUIEDITOR.getMarkdown(),
+            TuiEditor.getMarkdown(),
         );
     } catch (error) {
         console.log('Couldn\'t write file:', error);

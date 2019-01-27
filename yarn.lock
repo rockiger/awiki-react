@@ -3298,6 +3298,13 @@ fs-extra@^7.0.0, fs-extra@^7.0.1:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+fs-jetpack@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/fs-jetpack/-/fs-jetpack-2.2.1.tgz#633821ac9c4d3e57f07f9ca9fb56be8dd6c663ca"
+  integrity sha512-pbRcz1OqtcmP100mkTuPXuMCx6LvmsZYGt/F2dDNKMeSH+FX+mA1vgRSLUKSQWAJSD8mWWYC8US+1U4LHR1Fmw==
+  dependencies:
+    minimatch "^3.0.2"
+
 fs-temp@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/fs-temp/-/fs-temp-1.1.2.tgz#cc52f038bbefe510f6bcd09ec592b79d0f69253f"
