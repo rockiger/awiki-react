@@ -5,7 +5,7 @@ import { shell } from 'electron';
 import React from 'react';
 import Editor from 'tui-editor';
 
-import { BASEPATH, EXT } from '../constants';
+import { normalizeCurrentFile, fileDir } from '../helper';
 
 
 let TuiEditor;
@@ -73,7 +73,7 @@ class WikiEditor extends React.Component {
 
     imageBlobHook(fileBlob, callback) {
         // Copies the image into the file structure of awiki
-        const cwd = currentDir(this.state.currentFile);
+        const cwd = fileDir(this.state.currentFile);
         jetpack.dir(cwd);
         const fileDestination = jetpack.path(cwd, fileBlob.name);
         jetpack.copy(fileBlob.path, fileDestination);
@@ -111,17 +111,6 @@ class WikiEditor extends React.Component {
             </div>
         );
     }
-}
-
-
-function normalizeCurrentFile(relFilePath) {
-    const filePathPlusExt = relFilePath.endsWith('.markdown') ? relFilePath : relFilePath + EXT;
-    const absFilePath = filePathPlusExt;
-    return absFilePath;
-}
-
-function currentDir(relFilePath) {
-    return normalizeCurrentFile(relFilePath).slice(0, -EXT.length);
 }
 
 function writeEditorValue(state) {

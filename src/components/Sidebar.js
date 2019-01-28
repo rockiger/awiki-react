@@ -10,9 +10,10 @@ import {
     FocusStyleManager, ITreeNode, Tree,
 } from '@blueprintjs/core';
 
-
+import { normalizeCurrentFile, fileDir } from '../helper';
 import { BASEPATH, EXT } from '../constants';
 
+// "import" from remote
 const { MenuItem, Menu } = remote;
 
 
@@ -75,15 +76,14 @@ export default class Sidebar extends Component {
     }
 
     createContextMenu(menuPath) {
-        const { toggleNewFileDialog } = this.props;
+        const { toggleNewFileDialog, setNewFileDir } = this.props;
         const menu = new Menu();
         // Build menu one item at a time, unlike
         menu.append(new MenuItem({
             label: 'New Sub Page...',
             click() {
                 console.log('create sub page for:', menuPath);
-                // openNewPageDialog(menuPath)
-                // setState newFiledir
+                setNewFileDir(fileDir(menuPath));
                 toggleNewFileDialog();
             },
         }));

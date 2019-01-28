@@ -5,11 +5,16 @@
  * Licensed under the terms of the LICENSE file distributed with this project.
  */
 
+import path from 'path';
+import * as jetpack from 'fs-jetpack';
+
 import classNames from 'classnames';
 import * as React from 'react';
 
 import { InputGroup, Overlay } from '@blueprintjs/core';
 import { Classes } from '@blueprintjs/select';
+
+import { EXT } from '../constants';
 
 export default class NewFileDialog extends React.PureComponent {
     constructor(props) {
@@ -20,10 +25,12 @@ export default class NewFileDialog extends React.PureComponent {
     }
 
     onKeyDown(ev) {
-        if (ev.key === 'Enter') {
+        if (ev.key === 'Enter' && this.state.value) {
+            ev.preventDefault();
             console.log(this.state.value);
-            // create new file
-            // set the new file as currentFile
+            console.log(this.props.newFileDir);
+            const newFilePath = createFile(this.state.value.trim(), this.props.newFileDir);
+            this.props.setCurrentFile(newFilePath);
             this.props.onClose();
         }
     }
@@ -49,4 +56,14 @@ export default class NewFileDialog extends React.PureComponent {
             </Overlay>
         );
     }
+}
+
+function createFile(filename, dirpath) {
+    const filepath = path.join(dirpath, filename + EXT);
+    if (!jetpack.exists(filepath)) {
+        const created = new Date();
+        jetpack.file(filepath, { content: `# ${filename}\nCreated ${created.toDateString()}` });
+        // TODO create a new leaf in the page tree, think about using a state-change to initiate recreating sidebar tree, maybe use componentWillReceiveProps or getDerivedStateFromProps
+    }
+    return filepath;
 }
