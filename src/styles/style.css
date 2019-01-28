@@ -30,7 +30,6 @@ body {
     overflow: auto;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
       0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-    z-index: 100;
     cursor: default;
     padding: 7px 0;
     background-color: var(--bg_color)
@@ -69,6 +68,14 @@ pre.CodeMirror-line {
 .te-switch-button.markdown, .te-switch-button.wysiwyg {
   font-family: system-ui;
 }
+
+/* New File Dialog */
+.new-file-dialog {
+  width: 500px;
+  top: 20vh;
+  filter
+}
+/* END New File Dialog */
 
 
 /* Scrollbars */ 

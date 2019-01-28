@@ -1,17 +1,20 @@
+import { remote } from 'electron';
+
 import fs from 'fs';
 import path from 'path';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
 // import Tree from './Tree';
 import {
-    FocusStyleManager, Classes, Icon, ITreeNode, Position, Tooltip, Tree,
+    FocusStyleManager, ITreeNode, Tree,
 } from '@blueprintjs/core';
-import { smallTree, tree, blueprintTree } from './treeSampleData.js';
 
 
 import { BASEPATH, EXT } from '../constants';
+
+const { MenuItem, Menu } = remote;
+
 
 FocusStyleManager.onlyShowFocusOnTabs();
 // import { sidebar, sidebar__ul } from './index.css';
@@ -32,6 +35,8 @@ export default class Sidebar extends Component {
         this.handleNodeClick = this.handleNodeClick.bind(this);
         this.handleNodeCollapse = this.handleNodeCollapse.bind(this);
         this.handleNodeExpand = this.handleNodeExpand.bind(this);
+        this.handleNodeContextMenu = this.handleNodeContextMenu.bind(this);
+        this.createContextMenu = this.createContextMenu.bind(this);
     }
 
     componentDidMount() {
@@ -46,8 +51,8 @@ export default class Sidebar extends Component {
         });
     }
 
-    handleNodeClick(nodeData, e) {
-        console.log('handleNodeClick:', nodeData, e);
+    handleNodeClick(nodeData, ev) {
+        console.log('handleNodeClick:', nodeData, ev);
         this.props.setCurrentFile(nodeData.id);
         this.setState(this.state);
     }
@@ -64,6 +69,28 @@ export default class Sidebar extends Component {
         this.setState(this.state);
     }
 
+    handleNodeContextMenu(nodeData) {
+        console.log('handeNodeContextMenu:', nodeData);
+        this.createContextMenu(nodeData.id);
+    }
+
+    createContextMenu(menuPath) {
+        const { toggleNewFileDialog } = this.props;
+        const menu = new Menu();
+        // Build menu one item at a time, unlike
+        menu.append(new MenuItem({
+            label: 'New Sub Page...',
+            click() {
+                console.log('create sub page for:', menuPath);
+                // openNewPageDialog(menuPath)
+                // setState newFiledir
+                toggleNewFileDialog();
+            },
+        }));
+
+        menu.popup();
+    }
+
     render() {
         return (
             <div className="sidebar">
@@ -72,6 +99,7 @@ export default class Sidebar extends Component {
                     onNodeClick={this.handleNodeClick}
                     onNodeCollapse={this.handleNodeCollapse}
                     onNodeExpand={this.handleNodeExpand}
+                    onNodeContextMenu={this.handleNodeContextMenu}
                 />
             </div>
         );
