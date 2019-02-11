@@ -1,0 +1,73 @@
+
+import { find } from 'find-in-files';
+import React from 'react';
+
+import { Omnibar } from '@blueprintjs/select';
+import { MenuItem } from '@blueprintjs/core';
+
+import { log } from 'core-js';
+import { BASEPATH, EXT } from '../constants';
+
+export default class OpenPageBar extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            fileList: [],
+        };
+        this.populateFileList = this.populateFileList.bind(this);
+        this.setFileList = this.setFileList.bind(this);
+    }
+
+    componentDidMount() {
+        console.log('OpenPageBar did mount');
+        this.populateFileList();
+    }
+
+    setFileList(results) {
+        const fileList = [];
+        // eslint-disable-next-line
+        for (const result in results) {
+            fileList.push(result);
+        }
+        fileList.reverse();
+        this.setState({ fileList });
+    }
+
+    populateFileList(searchString = '') {
+        find({ term: searchString, flags: 'ig' }, BASEPATH, `.${EXT}`)
+            .then((results) => {
+                this.setFileList(results);
+            });
+    }
+
+    render() {
+        return (
+            <Omnibar
+                isOpen={this.props.isOpen}
+                onItemSelect={() => {}}
+                items={this.state.fileList}
+                itemRenderer={renderItem}
+                // initialContent={this.state.items.slice(0, 10).map(this.renderItem)} https://github.com/palantir/blueprint/issues/3160
+            />
+        );
+    }
+}
+
+function renderItem(filePath, { handleClick, modifiers, query }) {
+    if (!modifiers.matchesPredicate) {
+        return null;
+    }
+
+    const relPath = filePath.slice(BASEPATH.length, -EXT.length);
+    const text = relPath.split('/').join(' > ');
+    return (
+        <MenuItem
+            key={filePath}
+            active={modifiers.active}
+            disabled={modifiers.disabled}
+            onClick={handleClick}
+            text={text}
+        />
+    );
+}
