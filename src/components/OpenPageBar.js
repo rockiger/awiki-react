@@ -14,14 +14,28 @@ export default class OpenPageBar extends React.Component {
 
         this.state = {
             fileList: [],
+            query: '',
         };
         this.populateFileList = this.populateFileList.bind(this);
         this.setFileList = this.setFileList.bind(this);
+        this.onQueryChange = this.onQueryChange.bind(this);
+        this.onItemSelect = this.onItemSelect.bind(this);
     }
 
     componentDidMount() {
         console.log('OpenPageBar did mount');
         this.populateFileList();
+    }
+
+    onItemSelect(item, ev) {
+        console.log('onItemSelect', item);
+        this.props.setCurrentFile(item);
+        this.props.setOpenPageBar(false);
+    }
+
+    onQueryChange(query) {
+        this.setState({ query });
+        if (query.length > 2) this.populateFileList(query);
     }
 
     setFileList(results) {
@@ -45,9 +59,11 @@ export default class OpenPageBar extends React.Component {
         return (
             <Omnibar
                 isOpen={this.props.isOpen}
-                onItemSelect={() => {}}
+                onItemSelect={this.onItemSelect}
                 items={this.state.fileList}
                 itemRenderer={renderItem}
+                onQueryChange={this.onQueryChange}
+                query={this.state.query}
                 // initialContent={this.state.items.slice(0, 10).map(this.renderItem)} https://github.com/palantir/blueprint/issues/3160
             />
         );

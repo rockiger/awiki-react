@@ -14,19 +14,23 @@ export default class App extends React.Component {
             currentFile: '/home/macco/mega/awiki/Home/Bücher/Bergauf_mit_Rückenwind',
             newFileDialog: false,
             newFileDir: '',
-            omnibar: false,
+            openPageBar: false,
         };
 
         this.setCurrentFile = this.setCurrentFile.bind(this);
         this.toggleNewFileDialog = this.toggleNewFileDialog.bind(this);
         this.setNewFileDir = this.setNewFileDir.bind(this);
+        this.setOpenPageBar = this.setOpenPageBar.bind(this);
     }
 
     componentWillMount() {
         document.addEventListener('keydown', (ev) => {
             const ky = ev.key;
-            if (ev.ctrlKey && ev.key === 'p') {
-                this.setState({ omnibar: !this.state.omnibar });
+            if ((ev.ctrlKey && ev.key === 'p')
+                || (ev.ctrlKey && ev.shiftKey && ev.key === 'F')) {
+                this.setState({ openPageBar: !this.state.openPageBar });
+            } else if (ev.key === 'Escape') {
+                this.setState({ openPageBar: false });
             }
         });
     }
@@ -41,9 +45,13 @@ export default class App extends React.Component {
 
     setNewFileDir(newFileDir) {
         console.log(newFileDir);
-
         this.setState({ newFileDir });
     }
+
+    setOpenPageBar(openPageBarState) {
+        this.setState({ openPageBar: openPageBarState });
+    }
+
 
     toggleNewFileDialog() {
         this.setState(prevState => ({ newFileDialog: !prevState.newFileDialog }));
@@ -74,7 +82,9 @@ export default class App extends React.Component {
                     setCurrentFile={this.setCurrentFile}
                 />
                 <OpenPageBar
-                    isOpen={this.state.omnibar}
+                    isOpen={this.state.openPageBar}
+                    setCurrentFile={this.setCurrentFile}
+                    setOpenPageBar={this.setOpenPageBar}
                 />
             </div>
         );
