@@ -38,16 +38,25 @@ export default class Sidebar extends Component {
         this.handleNodeExpand = this.handleNodeExpand.bind(this);
         this.handleNodeContextMenu = this.handleNodeContextMenu.bind(this);
         this.createContextMenu = this.createContextMenu.bind(this);
+        this.populateSidebar = this.populateSidebar.bind(this);
     }
 
     componentDidMount() {
+        this.populateSidebar();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.updateSidebar) this.populateSidebar();
+    }
+
+    populateSidebar() {
         directoryTreeToObj(BASEPATH, (err, results) => {
             if (err) throw err;
-
             if (results) {
                 const nodes = results;
                 nodes[0].isExpanded = true;
                 this.setState({ nodes });
+                this.props.setUpdateSidebar(false);
             }
         });
     }

@@ -32,6 +32,7 @@ export default class NewFileDialog extends React.PureComponent {
             const newFilePath = createFile(this.state.value.trim(), this.props.newFileDir);
             this.props.setCurrentFile(newFilePath);
             this.props.onClose();
+            this.props.setUpdateSidebar(true);
         }
     }
 

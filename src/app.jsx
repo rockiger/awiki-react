@@ -15,12 +15,14 @@ export default class App extends React.Component {
             newFileDialog: false,
             newFileDir: '',
             openPageBar: false,
+            updateSidebar: true,
         };
 
         this.setCurrentFile = this.setCurrentFile.bind(this);
         this.toggleNewFileDialog = this.toggleNewFileDialog.bind(this);
         this.setNewFileDir = this.setNewFileDir.bind(this);
         this.setOpenPageBar = this.setOpenPageBar.bind(this);
+        this.setUpdateSidebar = this.setUpdateSidebar.bind(this);
     }
 
     componentWillMount() {
@@ -52,6 +54,10 @@ export default class App extends React.Component {
         this.setState({ openPageBar: openPageBarState });
     }
 
+    setUpdateSidebar(updateSidebar) {
+        this.setState({ updateSidebar });
+    }
+
 
     toggleNewFileDialog() {
         this.setState(prevState => ({ newFileDialog: !prevState.newFileDialog }));
@@ -65,9 +71,11 @@ export default class App extends React.Component {
                 data-tid="container"
             >
                 <Sidebar
+                    updateSidebar={this.state.updateSidebar}
                     setCurrentFile={this.setCurrentFile}
                     toggleNewFileDialog={this.toggleNewFileDialog}
                     setNewFileDir={this.setNewFileDir}
+                    setUpdateSidebar={this.setUpdateSidebar}
                 />
                 <main style={{ padding: 0, overflowY: 'hidden' }}>
                     <WikiEditor
@@ -80,6 +88,7 @@ export default class App extends React.Component {
                     onClose={this.toggleNewFileDialog}
                     newFileDir={this.state.newFileDir}
                     setCurrentFile={this.setCurrentFile}
+                    setUpdateSidebar={this.setUpdateSidebar}
                 />
                 <OpenPageBar
                     isOpen={this.state.openPageBar}
