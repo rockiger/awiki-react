@@ -5,7 +5,6 @@ import React from 'react';
 import { Omnibar } from '@blueprintjs/select';
 import { MenuItem } from '@blueprintjs/core';
 
-import { log } from 'core-js';
 import { BASEPATH, EXT } from '../constants';
 
 export default class OpenPageBar extends React.Component {
@@ -31,6 +30,7 @@ export default class OpenPageBar extends React.Component {
         console.log('onItemSelect', item);
         this.props.setCurrentFile(item);
         this.props.setOpenPageBar(false);
+        this.setState({ query: '' });
     }
 
     onQueryChange(query) {

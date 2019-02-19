@@ -11,7 +11,7 @@ export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            currentFile: '/home/macco/mega/awiki/Home/Bücher/Bergauf_mit_Rückenwind',
+            currentFile: '/home/macco/mega/awiki/Home',
             newFileDialog: false,
             newFileDir: '',
             openPageBar: false,

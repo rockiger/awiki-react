@@ -29,7 +29,6 @@ class WikiEditor extends React.Component {
     static getDerivedStateFromProps(props, state) {
     // Store prevId in state so we can compare when props change.
     // Clear out previously-loaded data (so we don't render stale stuff).
-        console.log('getDerivedStateFromProps');
         if (props.currentFile !== state.currentFile) {
             writeEditorValue(state);
             TuiEditor.setMarkdown(createEditorValue(props.currentFile));

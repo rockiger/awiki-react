@@ -10,7 +10,7 @@ import {
     FocusStyleManager, ITreeNode, Tree,
 } from '@blueprintjs/core';
 
-import { normalizeCurrentFile, fileDir } from '../helper';
+import { fileDir, normalizeCurrentFile } from '../helper';
 import { BASEPATH, EXT } from '../constants';
 
 // "import" from remote
@@ -25,7 +25,7 @@ directoryTreeToObj(BASEPATH, (err, results) => {
     if (err) throw err;
     console.log(results);
 },
-'/home/macco/mega/awiki/Home/Bücher/Bergauf_mit_Rückenwind');
+'/home/macco/mega/awiki/Home');
 
 
 export default class Sidebar extends Component {
@@ -40,6 +40,7 @@ export default class Sidebar extends Component {
         this.handleNodeContextMenu = this.handleNodeContextMenu.bind(this);
         this.createContextMenu = this.createContextMenu.bind(this);
         this.populateSidebar = this.populateSidebar.bind(this);
+        this.updateSidebar = this.updateSidebar.bind(this);
     }
 
     componentDidMount() {
@@ -47,7 +48,11 @@ export default class Sidebar extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('componentDidUpdate');
         if (this.props.updateSidebar) this.populateSidebar();
+        if (this.props.currentFile !== prevProps.currentFile) {
+            this.updateSidebar();
+        }
     }
 
     populateSidebar() {
@@ -61,6 +66,32 @@ export default class Sidebar extends Component {
             }
         },
         this.props.currentFile);
+    }
+
+    updateSidebar() {
+        console.log('UpdateSidebar');
+        const nodes = this.state.nodes;
+        Sidebar.forEachNode(nodes, (n) => {
+            n.isSelected = (normalizeCurrentFile(n.id) === normalizeCurrentFile(this.props.currentFile));
+            n.isExpanded = n.isExpanded
+                           || (this.props.currentFile.includes(n.id)
+                               && this.props.currentFile.length > n.id.length);
+        });
+        this.setState(nodes);
+    }
+
+    /**
+     * @param {array} nodes
+     * @param {(node) => void} callback
+     */
+    static forEachNode(nodes, callback) {
+        if (nodes == null) {
+            return [];
+        }
+        for (const node of nodes) {
+            callback(node);
+            Sidebar.forEachNode(node.childNodes, callback);
+        }
     }
 
     handleNodeClick(nodeData, ev) {
