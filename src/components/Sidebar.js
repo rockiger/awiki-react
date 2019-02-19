@@ -24,7 +24,8 @@ FocusStyleManager.onlyShowFocusOnTabs();
 directoryTreeToObj(BASEPATH, (err, results) => {
     if (err) throw err;
     console.log(results);
-});
+},
+'/home/macco/mega/awiki/Home/Bücher/Bergauf_mit_Rückenwind');
 
 
 export default class Sidebar extends Component {
@@ -58,7 +59,8 @@ export default class Sidebar extends Component {
                 this.setState({ nodes });
                 this.props.setUpdateSidebar(false);
             }
-        });
+        },
+        this.props.currentFile);
     }
 
     handleNodeClick(nodeData, ev) {
@@ -120,9 +122,8 @@ export default class Sidebar extends Component {
  * @param {string} dir - the (absolute) path to the directory
  * @param {function} done - the callback to handle the result (err, result<array>)
  */
-function directoryTreeToObj(dir, done) {
+function directoryTreeToObj(dir, done, currentFile = '') {
     const results = [];
-
     fs.readdir(dir, (err, list) => {
         if (err) return done(err);
 
@@ -135,6 +136,8 @@ function directoryTreeToObj(dir, done) {
                 label: path.basename(dir),
                 type: 'folder',
                 childNodes: results.sort(sortTree),
+                isSelected: (dir === currentFile),
+                isExpanded: currentFile.includes(dir),
             });
         }
 
@@ -148,9 +151,12 @@ function directoryTreeToObj(dir, done) {
                             label: path.basename(nFile),
                             type: 'folder',
                             childNodes: res.sort(sortTree),
+                            isSelected: (nFile === currentFile),
+                            isExpanded: currentFile.includes(nFile)
+                                        && currentFile.length > nFile.length,
                         });
                         if (!--pending) done(null, results.sort(sortTree));
-                    });
+                    }, currentFile);
                 } else {
                     fs.stat(withoutExt(nFile), (err, stat) => {
                         if (err) {
@@ -158,6 +164,8 @@ function directoryTreeToObj(dir, done) {
                                 id: nFile,
                                 label: withoutExt(path.basename(nFile)),
                                 type: 'file',
+                                isSelected: (nFile === currentFile),
+                                isExpanded: currentFile.includes(nFile),
                             });
                         }
                     });

@@ -71,6 +71,7 @@ export default class App extends React.Component {
                 data-tid="container"
             >
                 <Sidebar
+                    currentFile={this.state.currentFile}
                     updateSidebar={this.state.updateSidebar}
                     setCurrentFile={this.setCurrentFile}
                     toggleNewFileDialog={this.toggleNewFileDialog}
