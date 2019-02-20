@@ -10,6 +10,7 @@ import {
     FocusStyleManager, ITreeNode, Tree,
 } from '@blueprintjs/core';
 
+import { log } from 'handlebars';
 import { fileDir, normalizeCurrentFile } from '../helper';
 import { BASEPATH, EXT } from '../constants';
 
@@ -191,13 +192,16 @@ function directoryTreeToObj(dir, done, currentFile = '') {
                 } else {
                     fs.stat(withoutExt(nFile), (err, stat) => {
                         if (err) {
-                            results.push({
-                                id: nFile,
-                                label: withoutExt(path.basename(nFile)),
-                                type: 'file',
-                                isSelected: (nFile === currentFile),
-                                isExpanded: currentFile.includes(nFile),
-                            });
+                            if (nFile.endsWith(EXT)) {
+                                console.log('Push');
+                                results.push({
+                                    id: nFile,
+                                    label: withoutExt(path.basename(nFile)),
+                                    type: 'file',
+                                    isSelected: (nFile === currentFile),
+                                    isExpanded: currentFile.includes(nFile),
+                                });
+                            }
                         }
                     });
                     if (!--pending) done(null, results);
