@@ -44,3 +44,75 @@
     --wm_icon_hover_bg: #7A7F8B;
     --wm_icon_active_bg: #ffffff;
 }
+
+.bp3-tree { background-color: var(--bg_color); }
+  li.bp3-tree-node { border-top: 1px solid var(--borders_color); }
+  .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content { background-color: var(--selected_bg_color); }
+  .bp3-tree-node-content { height: 38px; }
+  .bp3-tree-node-content:hover {
+    background-color: rgba(191, 204, 214, 0.4);
+}
+/* Scrollbars */ 
+
+::-webkit-scrollbar
+{
+	height: 11px;
+	width: 11px;
+	background-color: #fcfcfc;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #d3d4d8;
+	border: 3px solid #fcfcfc;
+	-webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:window-inactive:hover
+{
+	background-color: #b8babf;
+}
+
+::-webkit-scrollbar-thumb:active
+{
+	background-color: var(--selected_bg_color);
+}
+
+::-webkit-scrollbar-thumb:window-inactive
+{
+	background-color: #d3d4d8;
+}
+
+::-webkit-scrollbar-corner
+{
+	background-color: #fcfcfc;
+}
+
+
+/* Custom for awiki */
+/* Needs to refactor toolbar to match Adwaita look */
+.tui-editor-defaultUI-toolbar, .tui-editor-defaultUI-toolbar button { background-color: var(--bg_color); }
+.tui-editor-defaultUI-toolbar button { 
+    border-color: var(--bg_color);
+    border-radius: 3px;
+    
+}
+.tui-editor-defaultUI-toolbar button:hover, .tui-editor-defaultUI .te-switch-button:hover { 
+    background-color: var(--wm_button_hover_bg);
+    border-color: var(--wm_button_hover_border);
+    color: var(--fg_color)
+}
+.tui-editor-defaultUI-toolbar button:focus, .tui-editor-defaultUI-toolbar button.active { 
+    background-color: var(--wm_button_active_bg);
+    border-color: var(--wm_button_active_bg);
+}
+
+
+.tui-editor-contents h1, .tui-editor-contents h2, .tui-editor-contents h3, .tui-editor-contents h4, .tui-editor-contents h5, .tui-editor-contents h6 {
+  color: var(--selected_bg_color);
+}
+.tui-editor-contents a { color: var(--link_color); }
+
+.tui-editor-defaultUI .te-mode-switch-section, .tui-editor-defaultUI .te-switch-button { background-color: var(--bg_color);}
+.tui-editor-defaultUI .te-switch-button  { border-color: var(--bg_color); }
+.tui-editor-defaultUI .te-switch-button.active {  background-color: var(--wm_button_hover_bg); color: var(--fg_color;);}

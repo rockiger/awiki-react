@@ -13,6 +13,36 @@
   <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css">
   <link rel="stylesheet" type="text/css" href="./styles/style.css">
+  <script type="text/javascript">
+    var gnomeExternalCss='gnome.css';
+    var ubuntuExternalCss='ubuntu.css';
+    var osxExternalCss = 'maverix.css';
+    var winExternalCss = 'metro-bootstrap.css';
+    var cssUrl = '';
+
+    if (process.platform === 'linux' /*process.env.DESKTOP_SESSION === "gnome"*/) {
+      const execSync = require('child_process').execSync;
+
+      const theme = execSync('gsettings get org.gnome.desktop.interface gtk-theme').toString()
+      
+      if (theme.includes('Adwaita')) {
+        cssUrl = 'adwaita.css'
+      }  else if (theme.includes('Arc')) {
+        cssUrl = 'arc.css'
+      }
+
+      
+    } else if (process.env.DESKTOP_SESSION === "ubuntu" || process.env.DESKTOP_SESSION === 'ubuntu-2d') {
+        cssUrl = ubuntuExternalCss;
+    } else if (process.platform === 'darwin') {
+        cssUrl = osxExternalCss;
+    } else if (process.platform === 'win32') {
+        cssUrl = winExternalCss;
+    }
+    if (cssUrl) {
+        document.write('<link rel="stylesheet" type="text/css" href="./styles/'+ cssUrl +'">');
+        }
+  </script>
 </head>
 <body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0" >
   <div id="App"></div>

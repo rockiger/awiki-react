@@ -31,7 +31,7 @@ body {
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
       0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
     cursor: default;
-    padding: 7px 0;
+    padding: 0;
     background-color: var(--bg_color)
   }
 
@@ -73,44 +73,5 @@ pre.CodeMirror-line {
 .new-file-dialog {
   width: 500px;
   top: 20vh;
-  filter
 }
 /* END New File Dialog */
-
-
-/* Scrollbars */ 
-
-::-webkit-scrollbar
-{
-	height: 13px;
-	width: 13px;
-	background-color: #d6d6d6;
-}
-
-::-webkit-scrollbar-thumb
-{
-	height: 42px;
-	background-color: #9b9d9e;
-	border: 3px solid #d6d6d6;
-	-webkit-border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover
-{
-	background-color: #828586;
-}
-
-::-webkit-scrollbar-thumb:active
-{
-	background-color: #4a90d9;
-}
-
-::-webkit-scrollbar-thumb:window-inactive
-{
-	background-color: #ededed;
-}
-
-::-webkit-scrollbar-corner
-{
-	background-color: #d6d6d6;
-}

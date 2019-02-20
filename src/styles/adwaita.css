@@ -1,0 +1,285 @@
+/*
+Copyright (C) 2014 macco
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*/
+/*
+    Created on : 03.11.2014, 02:12:40
+    Author     : Marco Laspe
+*/
+
+:root {
+    /* When color definition differs for dark and light variant
+    * it gets @if ed depending on --variant */
+
+    --base_color: #ffffff;
+    --text_color: black;
+    --bg_color: #f6f5f4;
+    --fg_color: #2e3436;
+    --selected_bg_color: #3584e4;
+    --selected_borders_color: #185fb4;
+    --borders_color: #cdc7c2;
+    --alt_borders_color: darken(--bg_color, 24%);
+    --borders_edge: rgba(255, 255, 255, 0.8);
+    --link_color: #1b6acb;
+    --link_visited_color: #15539e;
+    --headerbar_color: lighten(--bg_color, 5%);
+    --menu_color: var(--base_color);
+    --scrollbar_bg_color: #f8f7f6;
+    --scrollbar_slider_active_color: #1b6acb;
+    --success_color: #33d17a;
+    --destructive_color: #e01b24;
+    --backdrop_base_color:#e6e6e6;
+    --backdrop_insensitive_color: silver;
+    --backdrop_selected_fg_color: #e6e6e6;
+    --backdrop_menu_color: #e6e6e6;
+  }
+
+  :root{
+    --selected_fg_color: #ffffff;
+    --scrollbar_slider_color: #faf9f8;;
+    --scrollbar_slider_hover_color: var(#f8f7f6);
+    --backdrop_scrollbar_bg_color: #efedec;
+    --backdrop_scrollbar_slider_color: mix(--backdrop_fg_color, --backdrop_bg_color, 40%);
+    /* --top_hilight: --borders_edge;
+    --dark_fill: mix(--borders_color, --bg_color, 50%);
+    --popover_bg_color: --bg_color;
+    --popover_hover_color: lighten(--bg_color, 5%);
+
+
+    --warning_color: #f57900;
+    --error_color: #cc0000;
+
+    --osd_fg_color: #eeeeec;
+    --osd_text_color: white;
+    --osd_bg_color: transparentize(darken(#3d3846,10%), 0.3);
+    --osd_insensitive_bg_color: transparentize(mix(--osd_fg_color, opacify(--osd_bg_color, 1), 10%), 0.5);
+    --osd_insensitive_fg_color: mix(--osd_fg_color, opacify(--osd_bg_color, 1), 50%);
+    --osd_borders_color: transparentize(black, 0.3);
+
+    --sidebar_bg_color: mix(--bg_color, --base_color, 50%);
+    --base_hover_color: transparentize(--fg_color, 0.95);
+
+    --tooltip_borders_color: transparentize(white, 0.9);
+    --shadow_color: transparentize(black, 0.9);
+
+    --drop_target_color: #4e9a06;
+
+    /* insensitive state derived colors */
+    /* --insensitive_fg_color: mix(--fg_color, --bg_color, 50%);
+    --insensitive_bg_color: mix(--bg_color, --base_color, 60%);
+    --insensitive_borders_color: --borders_color; */
+
+    /* colors for the backdrop state, derived from the main colors. */
+    /* --backdrop_text_color: mix(--text_color, --backdrop_base_color, 80%);
+    --backdrop_bg_color: --bg_color;
+    --backdrop_fg_color: mix(--fg_color, --backdrop_bg_color, 50%);
+    --backdrop_borders_color: mix(--borders_color, --bg_color, 80%);
+    --backdrop_dark_fill: mix(--backdrop_borders_color, --backdrop_bg_color, 35%);
+    --backdrop_sidebar_bg_color: mix(--backdrop_bg_color, --backdrop_base_color, 50%);
+    */
+}
+
+  .bp3-tree { background-color: var(--bg_color); }
+  li.bp3-tree-node { border-top: 1px solid var(--borders_color); }
+  .bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content { background-color: var(--selected_bg_color); }
+  .bp3-tree-node-content { height: 38px; }
+  .bp3-tree-node-content:hover {
+    background-color: rgba(191, 204, 214, 0.4);
+}
+/* Scrollbars */ 
+
+::-webkit-scrollbar
+{
+	height: 10px;
+	width: 10px;
+	background-color: #c3c3c3;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #787C7D;
+	border: 3px solid #c3c3c3;
+	-webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+	background-color: #535859;
+}
+
+::-webkit-scrollbar-thumb:active
+{
+	background-color: var(--scrollbar_slider_active_color);
+}
+
+::-webkit-scrollbar-thumb:window-inactive
+{
+	background-color: #787C7D;
+}
+
+::-webkit-scrollbar-corner
+{
+	background-color: #c3c3c3;
+}
+
+
+/* Custom for awiki */
+/* Needs to refactor toolbar to match Adwaita look */
+.tui-editor-defaultUI-toolbar, .tui-editor-defaultUI-toolbar button { background-color: var(--bg_color); }
+.tui-editor-defaultUI-toolbar button { 
+  border-color: var(--bg_color);
+  border-radius: 3px;
+  
+}
+
+.tui-editor-contents h1, .tui-editor-contents h2, .tui-editor-contents h3, .tui-editor-contents h4, .tui-editor-contents h5, .tui-editor-contents h6 {
+  color: var(--selected_bg_color);
+}
+.tui-editor-contents a { color: var(--link_color); }
+
+
+/* END Scrollbars */
+
+/*
+
+#close {
+  display: block;
+  padding-left: 10px;
+  /*border-left: 1px solid #a1a1a1;
+  border-width: 0 0 0 1px;
+  border-image: linear-gradient(to bottom, rgba(161, 161, 161, 0), #a1a1a1 30%, #a1a1a1 70%, rgba(161, 161, 161, 0) 100%) 0 1/0 1 stretch;
+  margin-left: 5px;
+  height: 30px;
+  margin-top: 8px;
+}
+
+#close-app {
+  width: 31px;
+  height: 31px;
+  background-color: transparent;
+  margin-right: -10px;
+  padding-top: 7px;
+  padding-left: 7px;
+  margin-top: 0px;
+}
+
+#toolbar .container-fluid {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+}
+
+#toolbar .container-fluid  * {
+  -webkit-app-region: no-drag;
+}
+
+#toolbar .container-fluid .navbar-flex .spacer {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+}
+
+
+html {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+html, #root, #app, #toolbar {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+
+#toolbar {
+  border-width: 1px;
+}
+
+#list {
+  border: 1px solid #a1a1a1;
+  border-width: 0 0 1px 1px;
+}
+
+#task-sidebar {
+  border-right: 1px solid #a1a1a1;
+  border-bottom: 1px solid #a1a1a1;
+}
+
+#task-sidebar.closed {
+  border-right: none;
+}
+
+.navbar-default {
+  border-color: #a1a1a1;
+  background-image: linear-gradient(to bottom, white 0%, #f7f7f7 40%, #ededed 100%);
+  background-color: #ededed;
+}
+
+body.blur .navbar-default, body.blur button {
+  background-image: none;
+}
+
+/*
+#root.unmaximized {
+  padding: 7px;
+}
+
+#root.maximized {
+  height: calc(100% + 18px);
+}
+
+#app {
+  box-shadow: 0 3px 9px 1px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+}
+
+
+body {
+  background: transparent;
+}
+
+div.slider.closed ~ #tasks #list, div.slider.closed ~ #tasks #task-sidebar {
+  height: calc(100% - 88px);
+}
+
+div.slider.open ~ #tasks #list, div.slider.open ~ #tasks #task-sidebar {
+  height: calc(100% - 133px);
+}
+
+#search-form, #enter-task-div {
+  border-left: 1px solid #a1a1a1;
+  border-right: 1px solid #a1a1a1;
+}
+}
+
+#editor {
+  left: 7px;
+}
+
+#editor textarea {
+  height: calc(100% - 68px);
+  width: calc(100% + 7px);
+}
+
+#editor {
+  position: static;
+  width: calc(100% + 7px);
+  height: calc(100% - 68px);
+}
+
+#editor textarea {
+  height: calc(100% - 0px);
+  width: calc(100% - 7px);
+}
+*/
