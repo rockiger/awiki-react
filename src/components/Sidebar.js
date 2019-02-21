@@ -22,11 +22,11 @@ FocusStyleManager.onlyShowFocusOnTabs();
 // import { sidebar, sidebar__ul } from './index.css';
 
 
-directoryTreeToObj(BASEPATH, (err, results) => {
-    if (err) throw err;
-    console.log(results);
-},
-'/home/macco/mega/awiki/Home');
+// directoryTreeToObj(BASEPATH, (err, results) => {
+//     if (err) throw err;
+//     console.log(results);
+// },
+// '/home/macco/mega/awiki/Home');
 
 
 export default class Sidebar extends Component {
@@ -193,7 +193,6 @@ function directoryTreeToObj(dir, done, currentFile = '') {
                     fs.stat(withoutExt(nFile), (err, stat) => {
                         if (err) {
                             if (nFile.endsWith(EXT)) {
-                                console.log('Push');
                                 results.push({
                                     id: nFile,
                                     label: withoutExt(path.basename(nFile)),
