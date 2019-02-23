@@ -36,6 +36,8 @@ body {
   }
 
   /* Tui-Editor */
+
+  .tui-toolbar-icons.tui-help { background: unset; color: #333;}
   .tui-editor-contents {
     font-size: 18px;
   }
@@ -75,3 +77,16 @@ pre.CodeMirror-line {
   top: 20vh;
 }
 /* END New File Dialog */
+
+/* Help Page */
+.help--left, .help--right { flex-grow: 1; padding: 2rem; }
+.help-body .bp3-running-text table tbody tr:first-child th, .help-body table.bp3-html-table tbody tr:first-child th, .help-body .bp3-running-text table tbody tr:first-child td, .help-body table.bp3-html-table tbody tr:first-child td { box-shadow: none; }
+
+.help-body .bp3-running-text table th, .help-body table.bp3-html-table th, .help-body .bp3-running-text table td, .help-body table.bp3-html-table td { padding-left: 0; vertical-align: baseline; }
+
+.bp3-key-combo:empty::before, .bp3-key-combo > :first-child {
+  margin-left: 0;
+}
+.bp3-key-combo::before, .bp3-key-combo > * {
+  margin-left: 5px;
+}

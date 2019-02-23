@@ -120,7 +120,7 @@ li.bp3-tree-node { border-top: 1px solid var(--borders_color); }
     border-color: var(--wm_button_hover_border);
     color: var(--fg_color)
 }
-.tui-editor-defaultUI-toolbar button:focus, .tui-editor-defaultUI-toolbar button.active { 
+.tui-editor-defaultUI-toolbar button.active { 
     background-color: var(--wm_button_active_bg);
     border-color: var(--wm_button_active_bg);
 }
@@ -134,3 +134,10 @@ li.bp3-tree-node { border-top: 1px solid var(--borders_color); }
 .tui-editor-defaultUI .te-mode-switch-section, .tui-editor-defaultUI .te-switch-button { background-color: var(--bg_color);}
 .tui-editor-defaultUI .te-switch-button  { border-color: var(--bg_color); }
 .tui-editor-defaultUI .te-switch-button.active {  background-color: var(--wm_button_hover_bg); color: var(--fg_color;);}
+
+.help-body {
+    background-color: var(--bg_color);
+}
+
+.help-body .bp3-heading {margin: 0;}
+.bp3-running-text kbd, .bp3-key { padding: 7px 10px; min-width: 28px; height: 28px; }
