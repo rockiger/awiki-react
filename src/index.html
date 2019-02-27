@@ -16,19 +16,23 @@
   <script type="text/javascript">
     var gnomeExternalCss='gnome.css';
     var ubuntuExternalCss='ubuntu.css';
-    var osxExternalCss = 'maverix.css';
-    var winExternalCss = 'metro-bootstrap.css';
+    var osxExternalCss = 'mac.css';
+    var winExternalCss = 'win.css';
     var cssUrl = '';
 
     if (process.platform === 'linux' /*process.env.DESKTOP_SESSION === "gnome"*/) {
       const execSync = require('child_process').execSync;
 
-      const theme = execSync('gsettings get org.gnome.desktop.interface gtk-theme').toString()
+      const theme = execSync('gsettings get org.gnome.desktop.interface gtk-theme').toString().toLowerCase()
       
-      if (theme.includes('Adwaita')) {
+      if (theme.includes('adwaita')) {
         cssUrl = 'adwaita.css'
-      }  else if (theme.includes('Arc')) {
+      } else if (theme.includes('arc')) {
         cssUrl = 'arc.css'
+      } else if (theme.includes('OSC') || theme.includes('mac')) {
+        cssUrl = osxExternalCss;
+      } else if (theme.includes('win')) {
+        cssUrl = winExternalCss;
       }
 
       
@@ -43,6 +47,7 @@
         document.write('<link rel="stylesheet" type="text/css" href="./styles/'+ cssUrl +'">');
         }
   </script>
+  <title>Awiki</title>
 </head>
 <body style="overflow: hidden; background-color: rgba(0,0,0,0); margin: 0" >
   <div id="App"></div>

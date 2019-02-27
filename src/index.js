@@ -16,8 +16,8 @@ if (isDevMode) enableLiveReload({ strategy: 'react-hmr' });
 const createWindow = async () => {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1050,
+        height: 950,
         backgroundColor: '#fff',
     });
 
@@ -25,7 +25,7 @@ const createWindow = async () => {
     mainWindow.loadURL(`file://${__dirname}/index.html`);
 
     // Open the DevTools.
-    if (true) {
+    if (isDevMode) {
         await installExtension(REACT_DEVELOPER_TOOLS);
         mainWindow.webContents.openDevTools();
     }

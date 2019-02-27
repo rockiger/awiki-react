@@ -1,0 +1,213 @@
+/* Normal colors */
+:root {
+    --bg_color: #f5f5f5;
+    --fg_color: #000000;
+    --base_color: #FFFFFF;
+    --text_color: #000000;
+    --selected_bg_color: #0375f8;
+    --selected_fg_color: #FFFFFF;
+    --disabled_bg_color: mix($fg_color,: var(--bg_color), 0.95);
+    --disabled_fg_color: mix($fg_color,: var(--bg_color), 0.5);
+    --disabled_base_color: shade(var(--disabled_bg_color), 1.05);
+    --disabled_text_color: var(--disabled_fg_color);
+    /* Backdrop state colors */
+    --unfocused_bg_color: #e4e4e4;
+    --unfocused_fg_color: #8c8c8c;
+    --unfocused_base_color: var(--base_color);
+    --unfocused_text_color: #8c8c8c;
+    --unfocused_selected_bg_color: shade(var(--unfocused_bg_color), 0.7);
+    --unfocused_selected_fg_color: shade(var(--unfocused_text_color), 0.8);
+    --unfocused_disabled_bg_color: mix($fg_color,: var(--bg_color), 0.98);
+    --unfocused_disabled_fg_color: mix($fg_color,: var(--bg_color), 0.75);
+    --unfocused_disabled_base_color: var(--unfocused_disabled_bg_color);
+    --unfocused_disabled_text_color: var(--unfocused_disabled_fg_color);
+    /* Darker color scheme */
+    --dark_bg_color: #e0dee1;
+    --dark_fg_color: #000000;
+    /* Theme colors */
+    --theme_bg_color: var(--bg_color);
+    --theme_fg_color: var(--fg_color);
+    --theme_base_color: var(--base_color);
+    --theme_text_color: var(--text_color);
+    --theme_selected_bg_color: var(--selected_bg_color);
+    --theme_selected_fg_color: var(--selected_fg_color);
+    --theme_disabled_bg_color: var(--disabled_bg_color);
+    --theme_disabled_fg_color: var(--disabled_fg_color);
+    --theme_disabled_text_color: var(--disabled_text_color);
+    --theme_disabled_base_color: var(--disabled_base_color);
+    /* Unfocused color scheme */
+    --theme_unfocused_bg_color: var(--unfocused_bg_color);
+    --theme_unfocused_fg_color: var(--unfocused_fg_color);
+    --theme_unfocused_base_color: var(--unfocused_base_color);
+    --theme_unfocused_text_color: var(--unfocused_text_color);
+    --theme_unfocused_selected_bg_color: var(--unfocused_selected_bg_color);
+    --theme_unfocused_selected_fg_color: var(--unfocused_selected_fg_color);
+    --theme_unfocused_disabled_bg_color: var(--unfocused_disabled_bg_color);
+    --theme_unfocused_disabled_fg_color: var(--unfocused_disabled_fg_color);
+    --theme_unfocused_disabled_text_color: var(--unfocused_disabled_text_color);
+    --theme_unfocused_disabled_base_color: var(--unfocused_disabled_base_color);
+    /* Shadows */
+    --dark_shadow: rgb(0, 0, 0);
+    --color_shadow: var(--selected_bg_color);
+    --light_shadow: rgb(255, 255, 255);
+    /* Borders */
+    --borders: shade(var(--bg_color), 0.9);
+    --outline_color: shade(var(--bg_color), 0.75);
+    --unfocused_borders: shade(var(--unfocused_bg_color), 0.9);
+    /* Notification header backgrounds */
+    --info_fg_color: #FFFFFF;
+    --info_bg_color: #0055FF;
+    --warning_fg_color: #FFFFFF;
+    --warning_bg_color: #FF8300;
+    --question_fg_color: #FFFFFF;
+    --question_bg_color: #2C2C2C;
+    --error_fg_color: #FFFFFF;
+    --error_bg_color: #FF0000;
+    --link_color: #0057d8;
+    --error_color: #CC0000;
+    --success_color: #4ed464;
+    --warning_color: #FF9900;
+    /* Widget colors */
+    --tooltip_bg_color: var(--dark_bg_color);
+    --tooltip_fg_color: var(--dark_fg_color);
+    --menu_bg_color: mix($base_color,: var(--bg_color), 0.5);
+    --menu_fg_color: var(--fg_color);
+    --menubar_bg_color: shade(var(--bg_color), 0.9);
+    --menubar_fg_color: var(--fg_color);
+    --toolbar_bg_color: shade(var(--bg_color), 0.9);
+    --toolbar_fg_color: var(--fg_color);
+    --sidebar_bg_color: alpha(var(--bg_color), 0.85);
+    --sidebar_fg_color: var(--fg_color);
+    --taskbar_bg_color: #f6f6f6;
+    --taskbar_fg_color: #000000;
+    --titlebar_bg_color: var(--bg_color);
+    --titlebar_fg_color: var(--fg_color);
+    --headerbar_bg_color: var(--bg_color);
+    --headerbar_fg_color: var(--fg_color);
+    --terminal_bg_color: var(--base_color);
+    --terminal_fg_color: var(--fg_color);
+    /* OSD */
+    --osd_fg: var(--dark_bg_color);
+    --osd_bg: mix($dark_fg_color, var(--dark_bg_color), 0.2);
+    --osd_base: var(--dark_fg_color);
+    /* Budgie colors */
+    --raven_fg_color: var(--dark_fg_color);
+    --raven_bg_color: alpha(var(--dark_bg_color), 0.9);
+    /* Desktop Icons */
+    --desktop_item_fg: #FFFFFF;
+    --desktop_item_selected_fg: var(--selected_fg_color);
+    --desktop_item_text_shadow: alpha(var(--dark_shadow), 0.8);
+    /* LightDM greeter colors */
+    --lightdm_bg_color: var(--dark_bg_color);
+    --lightdm_fg_color: var(--dark_fg_color);
+    --wm_title: var(--titlebar_fg_color);
+    --wm_unfocused_title: var(--unfocused_fg_color);
+    --wm_highlight: alpha(var(--light_shadow), 0.8);
+    --wm_borders_edge: alpha(var(--light_shadow), 0.8);
+    --wm_bg_a: alpha(var(--selected_bg_color), 1.2);
+    --wm_bg_b: alpha(var(--selected_bg_color), 1.2);
+    --wm_shadow: alpha(var(--dark_shadow), 0.35);
+    --wm_border: alpha(var(--dark_shadow), 0.35);
+    --wm_button_hover_color_a: alpha(var(--selected_bg_color), 1.3);
+    --wm_button_hover_color_b: alpha(var(--selected_bg_color), 1.3);
+    --wm_button_active_color_a: alpha(var(--selected_bg_color), 0.85);
+    --wm_button_active_color_b: alpha(var(--selected_bg_color), 0.85);
+    --wm_button_active_color_c: alpha(var(--selected_bg_color), 0.85);
+    --content_view_bg: var(--base_color);
+    }
+    
+.bp3-tree { background-color: var(--bg_color); }
+li.bp3-tree-node { border-top: 1px solid var(--borders_color); }
+.bp3-tree-node.bp3-tree-node-selected > .bp3-tree-node-content { background-color: var(--selected_bg_color); }
+.bp3-tree-node-content { height: 38px; }
+.bp3-tree-node-content:hover {
+    background-color: var(--hover_bg_color);
+}
+
+.bp3-omnibar {
+    box-shadow: 0 0 0 1px var(--selected_bg_color), 0 4px 8px rgba(16, 22, 26, 0.1), 0 18px 46px 6px rgba(16, 22, 26, 0.1);
+}
+.bp3-omnibar-overlay .bp3-overlay-backdrop {
+    background-color: rgba(245,246,247,0.5);
+}
+.bp3-input, .bp3-menu {
+    color: var(--fg_color);
+}
+
+.bp3-menu-item.bp3-intent-primary:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-intent-primary.bp3-menu-item, .bp3-menu-item.bp3-intent-primary.bp3-active {
+    background-color: var(--selected_bg_color);
+}
+.bp3-menu-item:hover, .bp3-submenu .bp3-popover-target.bp3-popover-open > .bp3-menu-item {
+    background-color: var(--hover_bg_color);
+}
+/* Scrollbars */ 
+
+::-webkit-scrollbar
+{
+	height: 11px;
+	width: 11px;
+	background-color: #fcfcfc;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #d3d4d8;
+	border: 3px solid #fcfcfc;
+	-webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:window-inactive:hover
+{
+	background-color: #b8babf;
+}
+
+::-webkit-scrollbar-thumb:active
+{
+	background-color: var(--selected_bg_color);
+}
+
+::-webkit-scrollbar-thumb:window-inactive
+{
+	background-color: #d3d4d8;
+}
+
+::-webkit-scrollbar-corner
+{
+	background-color: #fcfcfc;
+}
+
+
+/* Custom for awiki */
+/* Needs to refactor toolbar to match Adwaita look */
+.tui-editor-defaultUI-toolbar, .tui-editor-defaultUI-toolbar button { background-color: var(--bg_color); }
+.tui-editor-defaultUI-toolbar button { 
+    border-color: var(--bg_color);
+    border-radius: 3px;
+    
+}
+.tui-editor-defaultUI-toolbar button:hover, .tui-editor-defaultUI .te-switch-button:hover { 
+    background-color: var(--wm_button_hover_bg);
+    border-color: var(--wm_button_hover_border);
+    color: var(--fg_color)
+}
+.tui-editor-defaultUI-toolbar button.active { 
+    background-color: var(--wm_button_active_bg);
+    border-color: var(--wm_button_active_bg);
+}
+
+
+.tui-editor-contents h1, .tui-editor-contents h2, .tui-editor-contents h3, .tui-editor-contents h4, .tui-editor-contents h5, .tui-editor-contents h6 {
+  color: var(--selected_bg_color);
+}
+.tui-editor-contents a { color: var(--link_color); }
+
+.tui-editor-defaultUI .te-mode-switch-section, .tui-editor-defaultUI .te-switch-button { background-color: var(--bg_color);}
+.tui-editor-defaultUI .te-switch-button  { border-color: var(--bg_color); }
+.tui-editor-defaultUI .te-switch-button.active {  background-color: var(--wm_button_hover_bg); color: var(--fg_color;);}
+
+.help-body {
+    background-color: var(--bg_color);
+}
+
+.help-body .bp3-heading {margin: 0;}
+.bp3-running-text kbd, .bp3-key { padding: 7px 10px; min-width: 28px; height: 28px; }

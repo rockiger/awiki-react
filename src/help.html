@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- include dependencies manually -->
+  <link href="../node_modules/normalize.css/normalize.css" rel="stylesheet" />
+  <link href="../node_modules/@blueprintjs/core/lib/css/blueprint.css" rel="stylesheet" />
+  <link href="../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css" rel="stylesheet" />
+  <link href="../node_modules/@blueprintjs/select/lib/css/blueprint-select.css" rel="stylesheet" />
+  <!-- NOTE: blueprint-icons.css file must be included alongside blueprint.css! -->
+  <link rel="stylesheet" href="../node_modules/tui-editor/dist/tui-editor.css">
+  <link rel="stylesheet" href="../node_modules/tui-editor/dist/tui-editor-contents.css">
+  <link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="../node_modules/highlight.js/styles/github.css">
+  <link rel="stylesheet" type="text/css" href="./styles/style.css">
+  <script type="text/javascript">
+    var gnomeExternalCss='gnome.css';
+    var ubuntuExternalCss='ubuntu.css';
+    var osxExternalCss = 'maverix.css';
+    var winExternalCss = 'metro-bootstrap.css';
+    var cssUrl = '';
+
+    if (process.platform === 'linux' /*process.env.DESKTOP_SESSION === "gnome"*/) {
+      const execSync = require('child_process').execSync;
+
+      const theme = execSync('gsettings get org.gnome.desktop.interface gtk-theme').toString()
+      
+      if (theme.includes('Adwaita')) {
+        cssUrl = 'adwaita.css'
+      }  else if (theme.includes('Arc')) {
+        cssUrl = 'arc.css'
+      }
+
+      
+    } else if (process.env.DESKTOP_SESSION === "ubuntu" || process.env.DESKTOP_SESSION === 'ubuntu-2d') {
+        cssUrl = ubuntuExternalCss;
+    } else if (process.platform === 'darwin') {
+        cssUrl = osxExternalCss;
+    } else if (process.platform === 'win32') {
+        cssUrl = winExternalCss;
+    }
+    if (cssUrl) {
+        document.write('<link rel="stylesheet" type="text/css" href="./styles/'+ cssUrl +'">');
+        }
+  </script>
+  <title>Shortcuts</title>
+</head>
+<body class="help-body" style="overflow: auto; display: flex; flex-direction: row;" >
+    <div class="help--left">
+        <h6 class="bp3-heading">Editor Shortcuts</h6>
+        <table class="bp3-html-table .modifier">
+            <tbody>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key">B</kbd></span>
+                        </td>
+                        <td>Toggle bold</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key">I</kbd></span>
+                        </td>
+                        <td>Toggle italic</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key">S</kbd></span>
+                        </td>
+                        <td>Toggle strike</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key">L</kbd></span>
+                        </td>
+                        <td>Add line</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Meta</kbd>+<kbd class="bp3-key">Q</kbd></span>
+                        </td>
+                        <td>Toggle blockquote</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key">U</kbd></span>
+                        </td>
+                        <td>Create unordered list</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key">O</kbd></span>
+                        </td>
+                        <td>Create ordered list</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Meta</kbd>+<kbd class="bp3-key">T</kbd></span>
+                        </td>
+                        <td>Create tasklist</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key bp3-modifier-key">Shift</kbd>+<kbd class="bp3-key">B</kbd></span>
+                        </td>
+                        <td>Insert code block</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="help--right">
+        <h6 class="bp3-heading">Navigation Shortcuts</h6>
+        <table class="bp3-html-table .modifier">
+            <tbody>
+                    <tr>
+                        <td>
+                                <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key">P</kbd></span>
+                        </td>
+                        <td>Open file by name or content</td>
+                    </tr>
+                    <tr>
+                        <td>
+                                <span class="bp3-key-combo"><kbd class="bp3-key bp3-modifier-key">Ctrl</kbd>+<kbd class="bp3-key bp3-modifier-key">Shift</kbd>+<kbd class="bp3-key">P</kbd></span><br />
+                        </td>
+                        <td>Open file by name or content</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
