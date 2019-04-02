@@ -20,11 +20,13 @@ class WikiEditor extends React.Component {
         this.state = {
             currentFile: this.props.currentFile,
             value: createEditorValue(this.props.currentFile),
+            // autoInsert: '',
         };
 
         window.addEventListener('beforeunload', ev => writeEditorValue(this.state));
         window.addEventListener('blur', ev => writeEditorValue(this.state));
         this.imageBlobHook = this.imageBlobHook.bind(this);
+        // this.onKeyUp = this.onKeyUp.bind(this);
     }
 
 
@@ -48,6 +50,9 @@ class WikiEditor extends React.Component {
 
     componentDidMount() {
         TuiEditor = new Editor({
+            // events: {
+            //     keyup: this.onKeyUp,
+            // },
             el: document.querySelector('#editSection'),
             initialEditType: 'wysiwyg',
             previewStyle: 'vertical',
@@ -107,6 +112,45 @@ class WikiEditor extends React.Component {
         const filePath = decodeURI(ev.target.href.replace('file:///', '/'));
         this.props.setCurrentFile(filePath);
     }
+
+    // onKeyUp(ev) {
+    //     const ky = ev.data.key;
+    //     console.log('ky', ky);
+    //     if (ky === 'Alt' || ky === 'AltGraph' || ky === "CapsLock") return;
+    //     if (ky === ' ') {
+    //         console.log('enter trigger');
+    //         if (this.state.autoInsert === '*') {
+    //             // toggle.list
+    //             console.log('toggle.list');
+    //             TuiEditor.commandManager.exec('OL');
+    //         } else if (this.state.autoInsert === '#') {
+    //             // insert H1
+    //         } else if (this.state.autoInsert === '##') {
+    //             // insert H2
+    //         } else if (this.state.autoInsert === '###') {
+    //             // insert H3
+    //         } else if (this.state.autoInsert === '####') {
+    //             // insert H4
+    //         } else if (this.state.autoInsert === '#####') {
+    //             // insert H5
+    //         } else if (this.state.autoInsert === '######') {
+    //             // insert H6
+    //         } else if (this.state.autoInsert === '1') {
+    //             // insert orderd list
+    //             console.log('toggle ordered list');
+    //             TuiEditor.commandManager.exec('OL');
+    //         }
+    //         this.setState({ autoInsert: '' });
+    //     } else if (ky === '#') {
+    //         this.setState({ autoInsert: `${this.state.autoInsert}#` });
+    //     } else if (ky === '*') {
+    //         this.setState({ autoInsert: '*' });
+    //     } else if (ky === '1') {
+    //         this.setState({ autoInsert: '1' });
+    //     } else {
+    //         this.setState({ autoInsert: '' });
+    //     }
+    // }
 
     imageBlobHook(fileBlob, callback) {
         // Copies the image into the file structure of awiki
