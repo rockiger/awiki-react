@@ -25,7 +25,7 @@
 
       const theme = execSync('gsettings get org.gnome.desktop.interface gtk-theme').toString().toLowerCase()
       
-      if (theme.includes('adwaita')) {
+      if (theme.includes('waita')) {
         cssUrl = 'adwaita.css'
       } else if (theme.includes('arc')) {
         cssUrl = 'arc.css'
