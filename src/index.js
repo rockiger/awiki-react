@@ -1,6 +1,10 @@
+import fs from 'fs';
+import path from 'path';
 import { app, BrowserWindow } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { enableLiveReload, addBypassChecker } from 'electron-compile';
+
+import { EXT, HOMEPATH, BASEPATH, TRASHPATH} from './constants'
 
 // That files from file system are shown
 addBypassChecker(filePath => filePath.indexOf(app.getAppPath()) === -1 && (/.jpg/.test(filePath) || /.ms/.test(filePath) || /.png/.test(filePath)));
@@ -13,7 +17,12 @@ const isDevMode = process.execPath.match(/[\\/]electron/);
 
 if (isDevMode) enableLiveReload({ strategy: 'react-hmr' });
 
+// check if wikidirectory is present, if not create it
+if (!fs.existsSync(HOMEPATH)) createDefaultDirectory();
+
+
 const createWindow = async () => {
+
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 1050,
@@ -63,3 +72,11 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+function createDefaultDirectory() {
+    fs.mkdirSync(BASEPATH, { recursive: true });
+    fs.mkdirSync(HOMEPATH, { recursive: true });
+    fs.writeFileSync(HOMEPATH + EXT, '# Home\n\n');
+    fs.mkdirSync(TRASHPATH, { recursive: true });
+    fs.writeFileSync(TRASHPATH + EXT, '# Trash\n\n');
+}

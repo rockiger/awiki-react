@@ -1,3 +1,4 @@
+import path from 'path';
 import React from 'react';
 
 import WikiEditor from './components/WikiEditor';
@@ -5,13 +6,13 @@ import Sidebar from './components/Sidebar';
 import NewFileDialog from './components/NewFileDialog';
 import OpenPageBar from './components/OpenPageBar';
 
-const DEFAULT_FILE = 'Home';
+import {HOMEPATH, DEFAULT_PAGE} from './constants';
 
 export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            currentFile: '/home/macco/mega/awiki/Home',
+            currentFile: HOMEPATH,
             newFileDialog: false,
             newFileDir: '',
             openPageBar: false,

@@ -178,15 +178,27 @@ function directoryTreeToObj(dir, done, currentFile = '') {
             fs.stat(nFile, (err, stat) => {
                 if (stat && stat.isDirectory()) {
                     directoryTreeToObj(nFile, (err, res) => {
-                        results.push({
-                            id: nFile,
-                            label: path.basename(nFile),
-                            type: 'folder',
-                            childNodes: res.sort(sortTree),
-                            isSelected: (nFile === currentFile),
-                            isExpanded: currentFile.includes(nFile)
-                                        && currentFile.length > nFile.length,
-                        });
+                        try {
+                            results.push({
+                                id: nFile,
+                                label: path.basename(nFile),
+                                type: 'folder',
+                                childNodes: res.sort(sortTree),
+                                isSelected: (nFile === currentFile),
+                                isExpanded: currentFile.includes(nFile)
+                                            && currentFile.length > nFile.length,
+                            });
+                        } catch (e) {
+                            results.push({
+                                id: nFile,
+                                label: path.basename(nFile),
+                                type: 'folder',
+                                childNodes: [],
+                                isSelected: (nFile === currentFile),
+                                isExpanded: currentFile.includes(nFile)
+                                            && currentFile.length > nFile.length,
+                            });
+                        }
                         if (!--pending) done(null, results.sort(sortTree));
                     }, currentFile);
                 } else {
