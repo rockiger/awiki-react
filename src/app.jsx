@@ -7,12 +7,12 @@ import NewFileDialog from './components/NewFileDialog';
 import OpenPageBar from './components/OpenPageBar';
 
 import {HOMEPATH, DEFAULT_PAGE} from './constants';
-
+const { localStorage } = window;
 export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            currentFile: HOMEPATH,
+            currentFile: localStorage.getItem('currentFile') ? localStorage.getItem('currentFile') : HOMEPATH,
             newFileDialog: false,
             newFileDir: '',
             openPageBar: false,
@@ -44,6 +44,7 @@ export default class App extends React.Component {
         this.setState({
             currentFile: relativePath,
         });
+        localStorage.setItem('currentFile', relativePath);
     }
 
     setNewFileDir(newFileDir) {
