@@ -3,6 +3,7 @@ import path from 'path';
 import { app, BrowserWindow } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { enableLiveReload, addBypassChecker } from 'electron-compile';
+import windowStateKeeper from 'electron-window-state';
 
 import { EXT, HOMEPATH, BASEPATH, TRASHPATH} from './constants'
 
@@ -23,12 +24,21 @@ if (!fs.existsSync(HOMEPATH)) createDefaultDirectory();
 
 const createWindow = async () => {
 
+    // Load the previous state with fallback to defaults
+    let mainWindowState = windowStateKeeper({
+        defaultWidth: 1050,
+        defaultHeight: 950,
+    });
+
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 1050,
-        height: 950,
+        x: mainWindowState.x,
+        y: mainWindowState.y,
+        width: mainWindowState.width,
+        height: mainWindowState.height,
         backgroundColor: '#fff',
     });
+    mainWindowState.manage(mainWindow);
 
     // and load the index.html of the app.
     mainWindow.loadURL(`file://${__dirname}/index.html`);
