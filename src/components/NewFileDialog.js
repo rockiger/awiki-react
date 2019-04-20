@@ -10,6 +10,7 @@ import * as jetpack from 'fs-jetpack';
 
 import classNames from 'classnames';
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 import { InputGroup, Overlay } from '@blueprintjs/core';
 import { Classes } from '@blueprintjs/select';
@@ -57,6 +58,13 @@ export default class NewFileDialog extends React.PureComponent {
             </Overlay>
         );
     }
+}
+NewFileDialog.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    onClose: PropTypes.func.isRequired,
+    newFileDir: PropTypes.string.isRequired,
+    setCurrentFile: PropTypes.func.isRequired,
+    setUpdateSidebar: PropTypes.func.isRequired,
 }
 
 function createFile(filename, dirpath) {

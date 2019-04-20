@@ -3,6 +3,7 @@ import * as jetpack from 'fs-jetpack';
 import { shell } from 'electron';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Editor from 'tui-editor';
 import $ from 'jquery';
 
@@ -147,6 +148,10 @@ class WikiEditor extends React.Component {
             </div>
         );
     }
+}
+WikiEditor.propTypes = {
+    currentFile: PropTypes.string.isRequired,
+    setCurrentFile: PropTypes.func.isRequired,
 }
 
 function writeEditorValue(state) {

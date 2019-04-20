@@ -1,6 +1,7 @@
 
 import { find } from 'find-in-files';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Omnibar } from '@blueprintjs/select';
 import { MenuItem } from '@blueprintjs/core';
@@ -68,6 +69,11 @@ export default class OpenPageBar extends React.Component {
             />
         );
     }
+}
+OpenPageBar.propTypes = {
+    isOpen: PropTypes.bool.isRequired,
+    setCurrentFile: PropTypes.func.isRequired,
+    setOpenPageBar: PropTypes.func.isRequired,
 }
 
 function renderItem(filePath, { handleClick, modifiers, query }) {

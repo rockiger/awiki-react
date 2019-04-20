@@ -10,7 +10,6 @@ import {
     FocusStyleManager, ITreeNode, Tree,
 } from '@blueprintjs/core';
 
-import { log } from 'handlebars';
 import { fileDir, normalizeCurrentFile } from '../helper';
 import { BASEPATH, EXT } from '../constants';
 
@@ -149,6 +148,15 @@ export default class Sidebar extends Component {
     }
 }
 
+Sidebar.propTypes = {
+    currentFile: PropTypes.string.isRequired,
+    updateSidebar: PropTypes.bool.isRequired,
+    setCurrentFile: PropTypes.func.isRequired,
+    toggleNewFileDialog: PropTypes.func.isRequired,
+    setNewFileDir: PropTypes.func.isRequired,
+    setUpdateSidebar: PropTypes.func.isRequired,
+}
+
 /**
  * Creates a sorted directory tree with folders and text-files combined
  * @param {string} dir - the (absolute) path to the directory
@@ -241,3 +249,4 @@ function sortTree(a, b) {
 function withoutExt(fileName) {
     return fileName.slice(0, -EXT.length);
 }
+

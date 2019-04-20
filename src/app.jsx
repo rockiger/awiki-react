@@ -1,6 +1,7 @@
 import path from 'path';
 import React from 'react';
 
+
 import WikiEditor from './components/WikiEditor';
 import Sidebar from './components/Sidebar';
 import NewFileDialog from './components/NewFileDialog';
@@ -8,6 +9,7 @@ import OpenPageBar from './components/OpenPageBar';
 
 import {HOMEPATH, DEFAULT_PAGE} from './constants';
 const { localStorage } = window;
+
 export default class App extends React.Component {
     constructor() {
         super();
