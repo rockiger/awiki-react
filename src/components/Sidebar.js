@@ -5,7 +5,6 @@ import path from 'path';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import Tree from './Tree';
 import {
     FocusStyleManager, ITreeNode, Tree,
 } from '@blueprintjs/core';
