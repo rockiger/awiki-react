@@ -7,7 +7,8 @@ import Sidebar from './components/Sidebar';
 import NewFileDialog from './components/NewFileDialog';
 import OpenPageBar from './components/OpenPageBar';
 
-import {HOMEPATH, DEFAULT_PAGE} from './constants';
+import { HOMEPATH, DEFAULT_PAGE } from './constants';
+
 const { localStorage } = window;
 
 export default class App extends React.Component {
@@ -104,3 +105,10 @@ export default class App extends React.Component {
         );
     }
 }
+
+export {
+    WikiEditor,
+    Sidebar,
+    NewFileDialog,
+    OpenPageBar,
+};

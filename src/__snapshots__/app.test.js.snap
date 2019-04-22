@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search has a valid snapshot 1`] = `
+<div
+  className="sidebar"
+>
+  <div
+    className="bp3-tree"
+  >
+    <ul
+      className="bp3-tree-node-list bp3-tree-root"
+    />
+  </div>
+</div>
+`;
