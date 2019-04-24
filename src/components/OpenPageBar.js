@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Omnibar } from '@blueprintjs/select';
 import { MenuItem } from '@blueprintjs/core';
 
-import { HOMEPATH, EXT } from '../constants';
+import { HOMEPATH, EXT, BASEPATH } from '../constants';
 
 export default class OpenPageBar extends React.Component {
     constructor(props) {
@@ -50,7 +50,7 @@ export default class OpenPageBar extends React.Component {
     }
 
     populateFileList(searchString = '') {
-        find({ term: searchString, flags: 'ig' }, HOMEPATH, `.${EXT}`)
+        find({ term: searchString, flags: 'ig' }, `${BASEPATH  }/`, `.${EXT}`)
             .then((results) => {
                 this.setFileList(results);
             });
@@ -74,14 +74,16 @@ OpenPageBar.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     setCurrentFile: PropTypes.func.isRequired,
     setOpenPageBar: PropTypes.func.isRequired,
-}
+};
 
 function renderItem(filePath, { handleClick, modifiers, query }) {
     if (!modifiers.matchesPredicate) {
         return null;
     }
 
-    const relPath = filePath.slice(HOMEPATH.length, -EXT.length);
+    const relPath = filePath.slice(BASEPATH.length + 1, -EXT.length);
+    console.log(relPath);
+
     const text = relPath.split('/').join(' > ');
     return (
         <MenuItem
