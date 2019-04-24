@@ -1,6 +1,6 @@
 {
-  "name": "awiki-react",
-  "productName": "awiki-react",
+  "name": "awiki",
+  "productName": "awiki",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",
@@ -76,12 +76,15 @@
     "babel-preset-react": "^6.24.1",
     "electron-forge": "^5.2.4",
     "electron-prebuilt-compile": "4.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
     "eslint": "^5.12.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7",
     "jest": "^24.7.1",
+    "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.8.6"
   }
 }
