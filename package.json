@@ -2,7 +2,7 @@
   "name": "awiki",
   "productName": "awiki",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A Zim inspired wiki with markdown syntax.",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -22,7 +22,8 @@
           "squirrel"
         ],
         "darwin": [
-          "zip"
+          "zip",
+          "dmg"
         ],
         "linux": [
           "deb",
@@ -30,16 +31,37 @@
         ]
       },
       "electronPackagerConfig": {
-        "packageManager": "yarn"
+        "packageManager": "yarn",
+        "icon": "./icon.svg"
       },
       "electronWinstallerConfig": {
-        "name": "awiki_react"
+        "name": "awiki"
       },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
+      "electronInstallerDMG": {
+        "icon": "./icon.icns"
+      },
+      "electronInstallerDebian": {
+        "icon": "./icon.svg",
+        "categories": [
+          "Office"
+        ],
+        "homepage": "https://rockiger.com"
+      },
+      "electronInstallerRedhat": {
+        "categories": [
+          "Office"
+        ]
+      },
+      "electronInstallerFlatpak" : {
+        "runtime": "org.freedesktop.Platform",
+        "icon": "./icon.svg",
+        "categories": [
+          "Office"
+        ]
+      },
       "github_repository": {
-        "owner": "",
-        "name": ""
+        "owner": "rockiger",
+        "name": "awiki-react"
       },
       "windowsStoreConfig": {
         "packageName": "",

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="fe68a858-d407-4692-b55a-9dffb576a509"
+   data-name="Layer 1"
+   width="756.31299"
+   height="756.31299"
+   viewBox="0 0 756.31297 756.31299"
+   version="1.1"
+   sodipodi:docname="icon.svg"
+   inkscape:version="0.92.4 (unknown)">
+  <metadata
+     id="metadata1390">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>smart home</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview1388"
+     showgrid="false"
+     inkscape:zoom="0.76605775"
+     inkscape:cx="402.21943"
+     inkscape:cy="425.19598"
+     inkscape:current-layer="fe68a858-d407-4692-b55a-9dffb576a509"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs1253">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2114">
+      <stop
+         style="stop-color:#197dec;stop-opacity:1;"
+         offset="0"
+         id="stop2110" />
+      <stop
+         style="stop-color:#3fcffb;stop-opacity:1"
+         offset="1"
+         id="stop2112" />
+    </linearGradient>
+    <linearGradient
+       id="b5ddeed3-b78d-400e-805e-1392ba69a239"
+       x1="283.67999"
+       y1="848.60999"
+       x2="283.67999"
+       y2="438.70999"
+       gradientTransform="matrix(-1,0,0,1,1204,0)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="gray"
+         stop-opacity="0.25"
+         id="stop1246" />
+      <stop
+         offset="0.54"
+         stop-color="gray"
+         stop-opacity="0.12"
+         id="stop1248" />
+      <stop
+         offset="1"
+         stop-color="gray"
+         stop-opacity="0.1"
+         id="stop1250" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2114"
+       id="linearGradient2116"
+       x1="381.1723"
+       y1="759.3288"
+       x2="381.6676"
+       y2="-0.40504289"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <title
+     id="title1255">smart home</title>
+  <path
+     d="M 439.43177,124.70471 C 390.94656,122.19471 344.76381,98.804722 300.66932,73.214729 256.57483,47.624735 212.88862,19.294743 165.56802,5.7247461 135.12756,-2.9952516 100.31648,-4.2752513 75.792763,20.154742 52.186009,43.614736 44.562508,84.154726 40.466298,121.70472 c -3.085543,28.27999 -4.899388,57.99998 3.547371,84.50997 5.869896,18.37 16.291135,33.81999 23.499663,51.41999 25.065858,61.25998 7.362469,136.78996 -19.825122,196.58995 -12.71699,28.05999 -27.528938,54.81998 -37.36118,84.68998 -9.83224122,29.86999 -14.3835853,64.07998 -5.7828837,94.53997 8.5337697,30.19999 28.8541827,52.83999 50.8746557,68.83998 44.716958,32.4 97.412148,41.67999 148.795488,46.92999 113.74344,11.62 228.09596,6.59 342.14059,1.55 42.20703,-1.87 84.59477,-3.76 126.11905,-13.50999 23.05122,-5.41 46.85207,-14 63.58496,-34.75 21.25076,-26.33999 26.51827,-70.93998 12.27524,-103.99997 -23.88117,-55.38998 -89.92248,-69.14998 -106.6152,-128.59997 -9.1897,-32.71999 0.24764,-69.16998 13.60049,-99.51997 C 683.96608,305.28467 731.98276,248.17468 734.51277,173.7547 736.25299,122.64471 713.1683,71.454729 677.48041,47.274735 640.06572,21.924742 588.19378,25.114741 560.59122,67.07473 c -28.40574,43.21999 -78.35005,59.84998 -121.15945,57.62998 z"
+     id="path1257"
+     style="opacity:1;fill:url(#linearGradient2116);fill-opacity:1;stroke-width:1"
+     inkscape:connector-curvature="0" />
+  <rect
+     x="161.6033"
+     y="185.28136"
+     width="150"
+     height="150"
+     rx="16.737804"
+     id="rect1978"
+     style="opacity:1;fill:#f32d2c;fill-opacity:1;stroke-width:1" />
+  <rect
+     style="opacity:1;fill:#f32d2c;fill-opacity:1;stroke-width:1"
+     id="rect2078"
+     rx="16.737804"
+     height="150"
+     width="150"
+     y="467.24445"
+     x="161.6033" />
+  <rect
+     x="442.23206"
+     y="467.24445"
+     width="150"
+     height="150"
+     rx="16.737804"
+     id="rect2080"
+     style="opacity:1;fill:#f32d2c;fill-opacity:1;stroke-width:1" />
+  <rect
+     style="opacity:1;fill:#f32d2c;fill-opacity:1;stroke-width:1"
+     id="rect2082"
+     rx="16.737804"
+     height="150"
+     width="150"
+     y="185.28136"
+     x="442.23206" />
+</svg>
